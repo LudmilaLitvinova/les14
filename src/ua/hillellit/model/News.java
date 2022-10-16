@@ -3,7 +3,8 @@ package ua.hillellit.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class News implements Observable{
+public class News implements Observable {
+
   private List<Observer> observers = new ArrayList<>();
   private String message;
 
@@ -19,12 +20,15 @@ public class News implements Observable{
 
   @Override
   public void notifyObservers() {
-    for (Observer observer : observers) observer.update(message);
+    for (Observer observer : observers) {
+      observer.update(message);
+    }
   }
 
-   public void publicNews(String message){
-    this.message = message;
-     notifyObservers();
-   }
-
+  public void publicNews(String message) {
+    if (message != null) {
+      this.message = message;
+      notifyObservers();
+    }
+  }
 }

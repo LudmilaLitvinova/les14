@@ -1,20 +1,17 @@
 package ua.hillellit.model;
 
-public class NewsAggregator implements Observer{
-    private String message;
+public class NewsAggregator implements Observer {
 
-  NewsAggregator(News news) {
+  public NewsAggregator(News news) {
     news.registerObserver(this);
-    }
+  }
 
   @Override
   public void update(String message) {
-      this.message = message;
-  display();
+    display(message);
   }
-  public void display() {
-      System.out.printf("News from a news aggregator: "+ message);
-    }
 
-
+  public void display(String str) {
+    System.out.printf("News from a news aggregator: " + str);
+  }
 }
